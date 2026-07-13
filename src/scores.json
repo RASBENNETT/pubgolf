@@ -26,8 +26,8 @@
       "players": [
         "Charlie",
         "David",
-        "McCann",
-        "Amanda",
+        "??",
+        "??",
         "Joe"
       ],
       "scores": {
@@ -44,28 +44,9 @@
       "color": "#F4A261",
       "players": [
         "Rob",
-        "Euan",
-        "Emma",
-        "Jenny",
-        "Jack"
-      ],
-      "scores": {
-        "Bar Salsa": 3,
-        "Oz Bar": 5,
-        "Pear Tree": 1,
-        "Bennetts": 0,
-        "Black Bird": 0,
-        "Golf Tavern": 0
-      }
-    },
-    {
-      "name": "Team Jim",
-      "color": "#F4A261",
-      "players": [
-        "Rob",
-        "Euan",
-        "Emma",
-        "Jenny",
+        "??",
+        "??",
+        "??",
         "Jack"
       ],
       "scores": {
