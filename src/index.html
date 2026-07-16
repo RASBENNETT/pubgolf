@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Pub Golf 2026 - Roster Launch</title>
+  <title>Pub Golf Championship 2026</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
   <style>
     /* --- Core Variables & Dark Theme Base --- */
     :root {
@@ -841,15 +842,14 @@
 
 <body>
 
-  <!-- Fixed Header matching main site structure -->
+  <!-- Fixed Header -->
   <header class="fixed-header">
     <h1>Pub Golf Championship 2026</h1>
-    <p>Official Competitor Roster</p>
+    <p id="current-location">Loading location...</p>
   </header>
 
-  <!-- Main Content Stream -->
+  <!-- Main Content Containers (SPA Views) -->
   <main id="app-container">
-    <div class="holding-container">
 
     <!-- View 1: Leaderboard -->
     <section id="view-leaderboard" class="app-view active-view">
@@ -957,19 +957,16 @@
         </div>
       </div>
 
-      <!-- Static Reminder Block -->
-      <div class="card border-accent" style="text-align: left;">
-        <h3 style="color: var(--accent-gold); margin-bottom: 6px;">⚠️ Mandatory Setup Reminder</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">
-          Ensure you arrive in regulation **Hawaiian dress** with an active **drinking glove**. Standard system scoring
-          profiles update automatically as the tournament moves active layout nodes.
-        </p>
+      <div class="card layout-placeholder">
+        <h2>🏆 Prizes & Forfeits</h2>
+        <p class="placeholder-text">Organizer spaces reserved. Rewards for individual hole-in-ones and the overall Green
+          Jacket winner will be updated live.</p>
       </div>
+    </section>
 
-    </div>
   </main>
 
-  <!-- Bottom Nav Bar matching main theme template for absolute visual consistency -->
+  <!-- Fixed Bottom Navigation Bar -->
   <nav class="fixed-nav">
     <button class="nav-item active" data-target="view-leaderboard">
       <span class="nav-icon">📊</span>
@@ -989,54 +986,145 @@
     </button>
   </nav>
 
-  <!-- Flat Parser Logic Controller Script -->
+  <!-- <script src="app.js"></script> -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const rosterOutput = document.getElementById('roster-output');
-      const playerCountBadge = document.getElementById('player-count');
+      // SPA View Router state elements
+      const navItems = document.querySelectorAll('.nav-item');
+      const appViews = document.querySelectorAll('.app-view');
+      const currentLocationEl = document.getElementById('current-location');
+      const refreshBtn = document.getElementById('btn-refresh');
+      const leaderboardList = document.getElementById('leaderboard-list');
 
-      async function loadFlatRoster() {
+      // --- State Initialization and SPA Router Management ---
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const targetViewId = item.getAttribute('data-target');
+
+          // Toggle Navigation Highlight Status
+          navItems.forEach(nav => nav.classList.remove('active'));
+          item.classList.add('active');
+
+          // Switch layout target container
+          appViews.forEach(view => {
+            if (view.id === targetViewId) {
+              view.classList.add('active-view');
+            } else {
+              view.classList.remove('active-view');
+            }
+          });
+        });
+      });
+
+      // --- Core Data Engine Engine ---
+      async function fetchScoresData() {
+        // Apply visual feedback spin animation to button
+        refreshBtn.classList.add('spinning');
+        const textNode = refreshBtn.querySelector('.btn-text');
+        textNode.textContent = '🔄 Loading Live Data...';
+
         try {
-          // Cache-busting fetch sequence alignment
+          // Strict asset cache-busting to bypass GitHub Pages aggressive text asset caching
           const response = await fetch(`./scores.json?t=${new Date().getTime()}`);
-          if (!response.ok) throw new Error('Data matrix stream offline.');
-
+          if (!response.ok) {
+            throw new Error('Network response failure fetching tournament config matrix JSON.');
+          }
           const data = await response.json();
 
-          // Unpack and completely flatten all players from every team object
-          let allPlayers = [];
-          if (data.teams && Array.isArray(data.teams)) {
-            data.teams.forEach(team => {
-              if (team.players && Array.isArray(team.players)) {
-                allPlayers = allPlayers.concat(team.players);
-              }
-            });
-          }
+          // Set App Context Window Headers
+          currentLocationEl.textContent = `Current Location: ${data.current_hole || 'Unknown'}`;
 
-          // Sort players alphabetically to ensure no hidden group ordering hints exist
-          allPlayers.sort((nameA, nameB) => nameA.localeCompare(nameB));
-
-          // Update live visual calculations readout counters
-          playerCountBadge.textContent = `Total Field: ${allPlayers.length} Players`;
-
-          // Generate clean, independent player layout cards
-          rosterOutput.innerHTML = '';
-          allPlayers.forEach((player, index) => {
-            const card = document.createElement('div');
-            card.className = 'player-card';
-            card.textContent = player;
-
-            // Micro staggered visual pop animation deployment
-            card.style.animationDelay = `${index * 0.03}s`;
-
-            rosterOutput.appendChild(card);
-          });
+          // Render calculations logic
+          renderLeaderboard(data.teams);
 
         } catch (error) {
-          console.error('Holding Roster Error Engine:', error);
-          rosterOutput.innerHTML = `<p style="color: #E63946; grid-column: 1/-1;">⚠️ Error indexing competitor registry list matrix.</p>`;
-          playerCountBadge.textContent = 'Field Sync Error';
+          console.error('Data Engine Error Event:', error);
+          leaderboardList.innerHTML = `
+                <div class="card" style="border-color: #E63946;">
+                    <p style="color: #E63946; font-weight: bold;">⚠️ Error Syncing Leaderboard Data</p>
+                    <p style="font-size: 0.85rem; margin-top: 4px;">Verify scores.json configuration matches the layout parameters schema completely.</p>
+                </div>`;
+        } finally {
+          // Remove animation indicators cleanly
+          setTimeout(() => {
+            refreshBtn.classList.remove('spinning');
+            textNode.textContent = '🔄 Refresh Live Scores';
+          }, 600);
         }
+      }
+
+      // --- Leaderboard Calculation Logic & Engine DOM Rendering ---
+      function renderLeaderboard(teamsArray) {
+        // Transform incoming model structure into data entries containing dynamic sums
+        const processedTeams = teamsArray.map(team => {
+          const totalScore = Object.values(team.scores).reduce((sum, current) => sum + current, 0);
+          return {
+            ...team,
+            totalScore: totalScore
+          };
+        });
+
+        // Sorting rule logic: Low Score Wins (Standard Professional Ruleset alignment)
+        processedTeams.sort((teamA, teamB) => teamA.totalScore - teamB.totalScore);
+
+        // Wipe container nodes safely before element construction loop cycles
+        leaderboardList.innerHTML = '';
+
+        // Inject computed dynamic elements into main execution UI tree container layout
+        processedTeams.forEach((team, index) => {
+          const rankNumber = index + 1;
+
+          // Outer Main Block Element Card Wrap
+          const cardWrapper = document.createElement('div');
+          cardWrapper.className = 'team-card-wrapper';
+
+          // Top Content Row Block Layout
+          const mainRow = document.createElement('div');
+          mainRow.className = 'team-main-row';
+
+          // Append explicit functional inline background colour hex mapping from static data source values
+          mainRow.innerHTML = `
+                <div class="team-rank">#${rankNumber}</div>
+                <div class="team-color-strip" style="background-color: ${team.color || '#fff'};"></div>
+                <div class="team-meta">
+                    <div class="team-name">${team.name}</div>
+                    <div class="team-players">${team.players.join(', ')}</div>
+                </div>
+                <div class="team-total-strokes">
+                    ${team.totalScore}
+                    <span class="strokes-label">Strokes</span>
+                </div>
+            `;
+
+          // Expandable Dropdown Block Element Layout Structure Map
+          const dropdown = document.createElement('div');
+          dropdown.className = 'team-scorecard-dropdown';
+
+          const scoreGrid = document.createElement('div');
+          scoreGrid.className = 'score-grid';
+
+          // Loop and unpack static structural pub properties to map row breakdown details dynamically
+          Object.keys(team.scores).forEach(pubName => {
+            const item = document.createElement('div');
+            item.className = 'score-grid-item';
+            item.innerHTML = `
+                    <span class="pub-title">${pubName}</span>
+                    <span class="pub-stroke-value">${team.scores[pubName] || 0}</span>
+                `;
+            scoreGrid.appendChild(item);
+          });
+
+          dropdown.appendChild(scoreGrid);
+          cardWrapper.appendChild(mainRow);
+          cardWrapper.appendChild(dropdown);
+
+          // Accordion Interaction Toggling Execution Module Logic Engine
+          mainRow.addEventListener('click', () => {
+            dropdown.classList.toggle('expanded');
+          });
+
+          leaderboardList.appendChild(cardWrapper);
+        });
       }
 
       // --- Action Event Trigger Attachments ---
@@ -1097,6 +1185,8 @@
 
       loadFlatRoster();
     });
+
+
   </script>
 </body>
 
