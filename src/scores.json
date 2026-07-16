@@ -2,57 +2,70 @@
   "current_hole": "Bar Salsa (Hole 1)",
   "teams": [
     {
-      "name": "Team Ruairidh",
+      "name": "Team 1",
       "color": "#E63946",
       "players": [
         "Ruairidh",
         "Cara",
-        "Stuart",
         "Mel",
-        "Matt"
-      ],
-      "scores": {
-        "Bar Salsa": 4,
-        "Oz Bar": 3,
-        "Pear Tree": 2,
-        "Bennetts": 0,
-        "Black Bird": 0,
-        "Golf Tavern": 0
-      }
-    },
-    {
-      "name": "Team Charlie",
-      "color": "#2A9D8F",
-      "players": [
+        "Matt",
         "Charlie",
         "David",
-        "??",
-        "??",
-        "Joe"
+        "Scott",
+        "McCann",
+        "Joe",
+        "Rob",
+        "Rachel",
+        "Rhonan",
+        "Jack",
+        "Euan"
       ],
       "scores": {
-        "Bar Salsa": 5,
-        "Oz Bar": 4,
-        "Pear Tree": 3,
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
         "Bennetts": 0,
         "Black Bird": 0,
         "Golf Tavern": 0
       }
     },
     {
-      "name": "Team Rob",
-      "color": "#F4A261",
+      "name": "Team 2",
+      "color": "#2A9D8F",
       "players": [
-        "Rob",
-        "??",
-        "??",
-        "??",
-        "Jack"
       ],
       "scores": {
-        "Bar Salsa": 3,
-        "Oz Bar": 5,
-        "Pear Tree": 1,
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
+        "Bennetts": 0,
+        "Black Bird": 0,
+        "Golf Tavern": 0
+      }
+    },
+    {
+      "name": "Team 3",
+      "color": "#F4A261",
+      "players": [
+      ],
+      "scores": {
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
+        "Bennetts": 0,
+        "Black Bird": 0,
+        "Golf Tavern": 0
+      }
+    },
+    {
+      "name": "Team 4",
+      "color": "#F4A261",
+      "players": [
+      ],
+      "scores": {
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
         "Bennetts": 0,
         "Black Bird": 0,
         "Golf Tavern": 0

@@ -389,6 +389,393 @@
       color: var(--golf-green);
       border-top: 3px solid var(--golf-green);
     }
+  </style>
+
+  <!-- Holding page styles -->
+  <style>
+    /* --- Core Variables & Dark Theme Base --- */
+    :root {
+      --bg-main: #121212;
+      --bg-card: #1E1E1E;
+      --bg-card-header: #262626;
+      --text-main: #FFFFFF;
+      --text-muted: #A0A0A0;
+      --golf-green: #2A9D8F;
+      --accent-gold: #E9C46A;
+      --border-color: #333333;
+      --nav-height: 70px;
+      --header-height: 85px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      overflow-x: hidden;
+      padding-top: var(--header-height);
+      padding-bottom: calc(var(--nav-height) + 20px);
+      line-height: 1.5;
+    }
+
+    /* --- Fixed Structural Layout components --- */
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      background-color: var(--bg-card);
+      border-bottom: 2px solid var(--golf-green);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .fixed-header h1 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .fixed-header p {
+      font-size: 0.9rem;
+      color: var(--accent-gold);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    #app-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 15px;
+    }
+
+    /* SPA View Toggling Logic */
+    .app-view {
+      display: none;
+      animation: fadeIn 0.25s ease-in-out forwards;
+    }
+
+    .app-view.active-view {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- Custom Dynamic Layout Components --- */
+    .card {
+      background-color: var(--bg-card);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .border-accent {
+      border-left: 4px solid var(--accent-gold);
+    }
+
+    .layout-placeholder {
+      border: 1px dashed #555;
+      background: repeating-linear-gradient(45deg, #1e1e1e, #1e1e1e 10px, #222 10px, #222 20px);
+    }
+
+    .placeholder-text {
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    /* Touch Targets: Custom Buttons */
+    .btn-primary {
+      width: 100%;
+      min-height: 50px;
+      background-color: var(--golf-green);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:active {
+      background-color: #218276;
+    }
+
+    /* Animated Refresh Spin effect */
+    .spinning .btn-text {
+      display: inline-block;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Leaderboard Dynamic Lists & Cards */
+    .team-card-wrapper {
+      margin-bottom: 12px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+    }
+
+    .team-main-row {
+      display: flex;
+      align-items: center;
+      padding: 16px;
+      cursor: pointer;
+      min-height: 65px;
+    }
+
+    .team-rank {
+      font-size: 1.4rem;
+      font-weight: 900;
+      width: 45px;
+      color: var(--accent-gold);
+    }
+
+    .team-color-strip {
+      width: 6px;
+      height: 35px;
+      border-radius: 3px;
+      margin-right: 14px;
+    }
+
+    .team-meta {
+      flex-grow: 1;
+    }
+
+    .team-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .team-players {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .team-total-strokes {
+      font-size: 1.3rem;
+      font-weight: 800;
+      text-align: right;
+      padding-left: 10px;
+    }
+
+    .strokes-label {
+      font-size: 0.65rem;
+      display: block;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* Expandable Scorecard Area */
+    .team-scorecard-dropdown {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+      background-color: #161616;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .team-scorecard-dropdown.expanded {
+      max-height: 1000px;
+      transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      padding: 14px;
+    }
+
+    .score-grid-item {
+      background-color: var(--bg-card);
+      padding: 10px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #292929;
+    }
+
+    .pub-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .pub-stroke-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    /* --- View 2 Specific Styles --- */
+    .map-card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+
+    .map-wrapper {
+      width: 100%;
+      background-color: #111;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 150px;
+      border: 1px solid var(--border-color);
+    }
+
+    .responsive-img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .course-list {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .course-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .course-list li:last-child {
+      border-bottom: none;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .par-3 {
+      background-color: #457B9D;
+    }
+
+    .par-4 {
+      background-color: #E9C46A;
+      color: #111;
+    }
+
+    .par-2 {
+      background-color: #6c2f95;
+    }
+
+    /* --- View 3 Specific Styles --- */
+    .rules-list li {
+      margin-left: 18px;
+      margin-bottom: 10px;
+    }
+
+    .drink-guide-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .drink-guide-item h4 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .text-highlight {
+      background-color: rgba(233, 196, 106, 0.05);
+      border-left: 2px solid var(--accent-gold);
+      padding-left: 6px;
+    }
+
+    /* --- Fixed Bottom Navigation Bar --- */
+    .fixed-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      z-index: 1000;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-item {
+      flex: 1;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      min-height: 48px;
+      /* Strict Mobile Hit-target constraint */
+      transition: color 0.2s;
+    }
+
+    .nav-icon {
+      font-size: 1.25rem;
+      margin-bottom: 2px;
+    }
+
+    .nav-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .nav-item.active {
+      color: var(--golf-green);
+      border-top: 3px solid var(--golf-green);
+    }
 
     /* Specific tweaks for the clean holding page layout */
     .holding-container {
@@ -464,11 +851,17 @@
   <main id="app-container">
     <div class="holding-container">
 
-      <!-- Event Countdown / Status Hook -->
-      <div class="countdown-banner">
-        ⛳ Tee Time: Tonight at 7:00 PM Sharp
+    <!-- View 1: Leaderboard -->
+    <section id="view-leaderboard" class="app-view active-view">
+      <button id="btn-refresh" class="btn-primary">
+        <span class="btn-text">🔄 Refresh Live Scores</span>
+      </button>
+      <div id="leaderboard-list">
+        <!-- Injected dynamically via JS -->
       </div>
-
+    </section>
+    <!-- View 1: Leaderboard -->
+    <section id="view-playerlist" class="app-view">
       <div class="card">
         <h2>Registered Competitors</h2>
         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">
@@ -482,6 +875,85 @@
         <!-- Flattened Player Output Container -->
         <div id="roster-output" class="roster-grid">
           <!-- JavaScript populates names list alphabetically here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- View 2: Course Map -->
+    <section id="view-map" class="app-view">
+      <div class="card map-card">
+        <h2>Tournament Route</h2>
+        <div class="map-wrapper">
+          <img src="assets/course-map.png" alt="Pub Golf Course Map" class="responsive-img">
+        </div>
+      </div>
+      <div class="card">
+        <h3>⛳ Official Hole Order⛳ </h3>
+        <ol class="course-list">
+          <li><strong>Bar Salsa</strong> <span class="badge par-3">Par 3</span></li>
+          <li><strong>Oz Bar</strong> <span class="badge par-4">Par 4</span></li>
+          <li><strong>Pear Tree</strong> <span class="badge par-3">Par 3</span></li>
+          <li><strong>Bennetts</strong> <span class="badge par-2">Par 2</span></li>
+          <li><strong>Black Bird</strong> <span class="badge par-4">Par 4</span></li>
+          <li><strong>Golf Tavern</strong> <span class="badge par-3">Par 3</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- View 3: Rulebook -->
+    <section id="view-rules" class="app-view">
+      <div class="card border-accent">
+        <h2>🕒 Schedule</h2>
+        <p>Shotgun start begins sharp at <strong>7:00 PM</strong>. Do not be late for tee-off.</p>
+      </div>
+
+      <div class="card">
+        <h2>👕 The Dress Code</h2>
+        <p>Hawaiian shirts, sunglasses, and golf gloves are <strong>mandatory</strong>. Cool golf caps are highly
+          preferable but optional.</p>
+      </div>
+
+      <div class="card">
+        <h2>⛳ Core Rules</h2>
+        <ul class="rules-list">
+          <li><strong>1 stroke</strong> = 1 sip of a pint or sippable drink.</li>
+          <li><strong>1 stroke</strong> = 1 "sook" through a straw. Counted the exact moment the straw leaves your lips.
+          </li>
+          <li>You <strong>must wear a golf glove</strong> at all times while actively drinking.</li>
+          <li>Gloves can be swapped and shared between teammates.</li>
+          <li>Failing to finish a drink penalties your team with a heavy <strong>+2 strokes</strong>.</li>
+          <li>A <strong>hole-in-one</strong> is achieved if a drink is finished in a single continuous sip/sook. Anyone who achieves this gets a lei 🌺</li>
+          <li>Minigames cannot be ruled out</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>🍺 Fair Play Drink Guide</h2>
+        <div class="drink-guide-item">
+          <h4>Hole 1: Bar Salsa <span class="badge par-3">Par 3</span></h4>
+          <p>1 Venom 🐍</p>
+        </div>
+        <div class="drink-guide-item">
+          <h4>Hole 2: Oz Bar <span class="badge par-4">Par 4</span></h4>
+          <p>1 tequila shot 🌵 & 1 pint of your personal preference.</p>
+        </div>
+        <div class="drink-guide-item text-highlight">
+          <h4>Hole 3: Pear Tree <span class="badge par-3">Par 3</span></h4>
+          <p>1 Alcopops bottle each. 🍹<strong>Bonus:</strong> Drink 1 shot alongside it to deduct 1 strokes (-1) from
+            your team
+            score!</p>
+        </div>
+        <div class="drink-guide-item">
+          <h4>Hole 4: Bennetts <span class="badge par-2">Par 2</span></h4>
+          <p>1 pint of Cider 🍎 or an IPA 🇮🇳</p>
+        </div>
+        <div class="drink-guide-item">
+          <h4>Hole 5: Black Bird <span class="badge par-4">Par 4</span></h4>
+          <p>1 pint of your personal preference. 🍺</p>
+        </div>
+        <div class="drink-guide-item">
+          <h4>Hole 6: Golf Tavern <span class="badge par-3">Par 3</span></h4>
+          <p>1 glass of bubbly. 🥂</p>
         </div>
       </div>
 
@@ -499,14 +971,22 @@
 
   <!-- Bottom Nav Bar matching main theme template for absolute visual consistency -->
   <nav class="fixed-nav">
-    <div class="nav-item active" style="cursor: default;">
+    <button class="nav-item active" data-target="view-leaderboard">
+      <span class="nav-icon">📊</span>
+      <span class="nav-label">Leaderboard</span>
+    </button>
+    <button class="nav-item" data-target="view-playerlist">
       <span class="nav-icon">👥</span>
-      <span class="nav-label">Players List</span>
-    </div>
-    <div class="nav-item" style="opacity: 0.3; cursor: not-allowed;">
-      <span class="nav-icon">🔒</span>
-      <span class="nav-label">Live Scores</span>
-    </div>
+      <span class="nav-label">Playerlist</span>
+    </button>
+    <button class="nav-item" data-target="view-map">
+      <span class="nav-icon">🗺️</span>
+      <span class="nav-label">Course Map</span>
+    </button>
+    <button class="nav-item" data-target="view-rules">
+      <span class="nav-icon">📜</span>
+      <span class="nav-label">Rulebook</span>
+    </button>
   </nav>
 
   <!-- Flat Parser Logic Controller Script -->
@@ -559,6 +1039,65 @@
         }
       }
 
+<<<<<<< HEAD
+=======
+      // --- Action Event Trigger Attachments ---
+      refreshBtn.addEventListener('click', fetchScoresData);
+
+      // Bootstrap app on start
+      fetchScoresData();
+
+
+      // Playerlist javascript from holding page
+
+      const rosterOutput = document.getElementById('roster-output');
+      const playerCountBadge = document.getElementById('player-count');
+
+      async function loadFlatRoster() {
+        try {
+          // Cache-busting fetch sequence alignment
+          const response = await fetch(`./scores.json?t=${new Date().getTime()}`);
+          if (!response.ok) throw new Error('Data matrix stream offline.');
+
+          const data = await response.json();
+
+          // Unpack and completely flatten all players from every team object
+          let allPlayers = [];
+          if (data.teams && Array.isArray(data.teams)) {
+            data.teams.forEach(team => {
+              if (team.players && Array.isArray(team.players)) {
+                allPlayers = allPlayers.concat(team.players);
+              }
+            });
+          }
+
+          // Sort players alphabetically to ensure no hidden group ordering hints exist
+          allPlayers.sort((nameA, nameB) => nameA.localeCompare(nameB));
+
+          // Update live visual calculations readout counters
+          playerCountBadge.textContent = `Total Field: ${allPlayers.length} Players`;
+
+          // Generate clean, independent player layout cards
+          rosterOutput.innerHTML = '';
+          allPlayers.forEach((player, index) => {
+            const card = document.createElement('div');
+            card.className = 'player-card';
+            card.textContent = player;
+
+            // Micro staggered visual pop animation deployment
+            card.style.animationDelay = `${index * 0.03}s`;
+
+            rosterOutput.appendChild(card);
+          });
+
+        } catch (error) {
+          console.error('Holding Roster Error Engine:', error);
+          rosterOutput.innerHTML = `<p style="color: #E63946; grid-column: 1/-1;">⚠️ Error indexing competitor registry list matrix.</p>`;
+          playerCountBadge.textContent = 'Field Sync Error';
+        }
+      }
+
+>>>>>>> gameday
       loadFlatRoster();
     });
   </script>
