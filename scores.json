@@ -8,7 +8,7 @@
         "Pear Tree": 1,
         "Bennetts": 2,
         "Black Bird": 2,
-        "Golf Tavern": 0
+        "Golf Tavern": 2 
       },
       "Carl": {
         "Bar Salsa": 5,
@@ -16,7 +16,7 @@
         "Pear Tree": 3,
         "Bennetts": 3,
         "Black Bird": 3,
-        "Golf Tavern": 0
+        "Golf Tavern": 3,
       },
       "Mel": {
         "Bar Salsa": 5,
@@ -24,7 +24,7 @@
         "Pear Tree": 5,
         "Bennetts": 4,
         "Black Bird": 5,
-        "Golf Tavern": 0
+        "Golf Tavern": 4,
       },
       "Matt": {
         "Bar Salsa": 4,
@@ -32,7 +32,7 @@
         "Pear Tree": 0,
         "Bennetts": 1,
         "Black Bird": 0,
-        "Golf Tavern": 0
+        "Golf Tavern": 2,
       },
       "Charlie": {
         "Bar Salsa": 5,
@@ -40,7 +40,7 @@
         "Pear Tree": 5,
         "Bennetts": 4,
         "Black Bird": 1,
-        "Golf Tavern": 0
+        "Golf Tavern": 3,
       },
       "David": {
         "Bar Salsa": 4,
@@ -48,7 +48,7 @@
         "Pear Tree": 0,
         "Bennetts": 1,
         "Black Bird": 0,
-        "Golf Tavern": 0
+        "Golf Tavern": 2,
       },
       "Scott": {
         "Bar Salsa": 5,
@@ -56,7 +56,7 @@
         "Pear Tree": 5,
         "Bennetts": 4,
         "Black Bird": 5,
-        "Golf Tavern": 0
+        "Golf Tavern": 4,
       },
       "McCann": {
         "Bar Salsa": 4,
@@ -64,7 +64,7 @@
         "Pear Tree": 1,
         "Bennetts": 1,
         "Black Bird": 0,
-        "Golf Tavern": 0
+        "Golf Tavern": 2,
       },
       "Joe": {
         "Bar Salsa": 3,
@@ -72,7 +72,7 @@
         "Pear Tree": 1,
         "Bennetts": 1,
         "Black Bird": 3,
-        "Golf Tavern": 0
+        "Golf Tavern": 2,
       },
       "Rob": {
         "Bar Salsa": 2,
@@ -80,7 +80,7 @@
         "Pear Tree": 1,
         "Bennetts": 1,
         "Black Bird": 2,
-        "Golf Tavern": 0
+        "Golf Tavern": 3,
       },
       "Rachel": {
         "Bar Salsa": 5,
@@ -88,15 +88,15 @@
         "Pear Tree": 5,
         "Bennetts": 4,
         "Black Bird": 5,
-        "Golf Tavern": 0
+        "Golf Tavern": 4,
       },
       "Rhonan": {
         "Bar Salsa": 5,
         "Oz Bar": 3,
         "Pear Tree": 5,
         "Bennetts": 4,
-        "Black Bird": 0,
-        "Golf Tavern": 0
+        "Black Bird": 3,
+        "Golf Tavern": 3,
       },
       "Jack": {
         "Bar Salsa": 2,
@@ -104,7 +104,7 @@
         "Pear Tree": 3,
         "Bennetts": 0,
         "Black Bird": 5,
-        "Golf Tavern": 0
+        "Golf Tavern": 4,
       },
       "Euan": {
         "Bar Salsa": 5,
@@ -112,7 +112,7 @@
         "Pear Tree": 5,
         "Bennetts": 4,
         "Black Bird": 5,
-        "Golf Tavern": 0
+        "Golf Tavern": 4,
       },
       "Harry": {
         "Bar Salsa": 5,
@@ -120,7 +120,7 @@
         "Pear Tree": 3,
         "Bennetts": 3,
         "Black Bird": 3,
-        "Golf Tavern": 0
+        "Golf Tavern": 2,
       }
     }
   ],
