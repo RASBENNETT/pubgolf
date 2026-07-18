@@ -1201,11 +1201,9 @@
 
           // Unpack and completely flatten all players from every team object
           let allPlayers = [];
-          if (data.teams && Array.isArray(data.teams)) {
-            data.teams.forEach(team => {
-              if (team.players && Array.isArray(team.players)) {
-                allPlayers = allPlayers.concat(team.players);
-              }
+          if (scores && Array.isArray(Object.keys(scores))) {
+            Object.keys(scores).forEach(player=> {
+              allPlayers.push(player)
             });
           }
 
