@@ -6,7 +6,7 @@
         "Bar Salsa": 4,
         "Oz Bar": 2,
         "Pear Tree": 1,
-        "Bennetts": 0,
+        "Bennetts": 2,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
@@ -14,7 +14,7 @@
         "Bar Salsa": 5,
         "Oz Bar": 3,
         "Pear Tree": 3,
-        "Bennetts": 0,
+        "Bennetts": 4,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
@@ -22,7 +22,7 @@
         "Bar Salsa": 5,
         "Oz Bar": 6,
         "Pear Tree": 5,
-        "Bennetts": 0,
+        "Bennetts": 4,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
@@ -30,7 +30,7 @@
         "Bar Salsa": 4,
         "Oz Bar": 1,
         "Pear Tree": 0,
-        "Bennetts": 0,
+        "Bennetts": 1,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
@@ -38,7 +38,7 @@
         "Bar Salsa": 5,
         "Oz Bar": 6,
         "Pear Tree": 5,
-        "Bennetts": 0,
+        "Bennetts": 4,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
@@ -46,15 +46,15 @@
         "Bar Salsa": 4,
         "Oz Bar": 1,
         "Pear Tree": 0,
-        "Bennetts": 0,
+        "Bennetts": 1,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
       "Scott": {
         "Bar Salsa": 5,
         "Oz Bar": 6,
-        "Pear Tree": 0,
-        "Bennetts": 0,
+        "Pear Tree": 5,
+        "Bennetts": 4,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
@@ -62,7 +62,7 @@
         "Bar Salsa": 4,
         "Oz Bar": 3,
         "Pear Tree": 1,
-        "Bennetts": 0,
+        "Bennetts": 4,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
@@ -70,7 +70,7 @@
         "Bar Salsa": 3,
         "Oz Bar": 1,
         "Pear Tree": 1,
-        "Bennetts": 0,
+        "Bennetts": 1,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
@@ -78,7 +78,7 @@
         "Bar Salsa": 3,
         "Oz Bar": 2,
         "Pear Tree": 1,
-        "Bennetts": 0,
+        "Bennetts": 1,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
@@ -86,7 +86,7 @@
         "Bar Salsa": 5,
         "Oz Bar": 6,
         "Pear Tree": 5,
-        "Bennetts": 0,
+        "Bennetts": 4,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
@@ -94,14 +94,14 @@
         "Bar Salsa": 5,
         "Oz Bar": 6,
         "Pear Tree": 5,
-        "Bennetts": 0,
+        "Bennetts": 4,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
       "Jack": {
         "Bar Salsa": 2,
         "Oz Bar": 3,
-        "Pear Tree": 0,
+        "Pear Tree": 3,
         "Bennetts": 0,
         "Black Bird": 0,
         "Golf Tavern": 0
@@ -110,7 +110,7 @@
         "Bar Salsa": 5,
         "Oz Bar": 6,
         "Pear Tree": 5,
-        "Bennetts": 0,
+        "Bennetts": 4,
         "Black Bird": 0,
         "Golf Tavern": 0
       },
@@ -118,7 +118,7 @@
         "Bar Salsa": 5,
         "Oz Bar": 6,
         "Pear Tree": 3,
-        "Bennetts": 0,
+        "Bennetts": 3,
         "Black Bird": 0,
         "Golf Tavern": 0
       }
