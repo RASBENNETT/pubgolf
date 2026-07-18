@@ -1,68 +1,112 @@
 {
   "current_hole": "Bar Salsa (Hole 1)",
-  "teams": [
+  "scores": [
     {
-      "name": "Team 1",
-      "color": "#E63946",
-      "players": [
-        "Ruairidh",
-        "Cara",
-        "Mel",
-        "Matt",
-        "Charlie",
-        "David",
-        "Scott",
-        "McCann",
-        "Joe",
-        "Rob",
-        "Rachel",
-        "Rhonan",
-        "Jack",
-        "Euan"
-      ],
-      "scores": {
+      "Ruairidh": {
         "Bar Salsa": 0,
         "Oz Bar": 0,
         "Pear Tree": 0,
         "Bennetts": 0,
         "Black Bird": 0,
         "Golf Tavern": 0
-      }
-    },
-    {
-      "name": "Team 2",
-      "color": "#2A9D8F",
-      "players": [
-      ],
-      "scores": {
+      },
+      "Cara": {
         "Bar Salsa": 0,
         "Oz Bar": 0,
         "Pear Tree": 0,
         "Bennetts": 0,
         "Black Bird": 0,
         "Golf Tavern": 0
-      }
-    },
-    {
-      "name": "Team 3",
-      "color": "#F4A261",
-      "players": [
-      ],
-      "scores": {
+      },
+      "Mel": {
         "Bar Salsa": 0,
         "Oz Bar": 0,
         "Pear Tree": 0,
         "Bennetts": 0,
         "Black Bird": 0,
         "Golf Tavern": 0
-      }
-    },
-    {
-      "name": "Team 4",
-      "color": "#F4A261",
-      "players": [
-      ],
-      "scores": {
+      },
+      "Matt": {
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
+        "Bennetts": 0,
+        "Black Bird": 0,
+        "Golf Tavern": 0
+      },
+      "Charlie": {
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
+        "Bennetts": 0,
+        "Black Bird": 0,
+        "Golf Tavern": 0
+      },
+      "David": {
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
+        "Bennetts": 0,
+        "Black Bird": 0,
+        "Golf Tavern": 0
+      },
+      "Scott": {
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
+        "Bennetts": 0,
+        "Black Bird": 0,
+        "Golf Tavern": 0
+      },
+      "McCann": {
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
+        "Bennetts": 0,
+        "Black Bird": 0,
+        "Golf Tavern": 0
+      },
+      "Joe": {
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
+        "Bennetts": 0,
+        "Black Bird": 0,
+        "Golf Tavern": 0
+      },
+      "Rob": {
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
+        "Bennetts": 0,
+        "Black Bird": 0,
+        "Golf Tavern": 0
+      },
+      "Rachel": {
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
+        "Bennetts": 0,
+        "Black Bird": 0,
+        "Golf Tavern": 0
+      },
+      "Rhonan": {
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
+        "Bennetts": 0,
+        "Black Bird": 0,
+        "Golf Tavern": 0
+      },
+      "Jack": {
+        "Bar Salsa": 0,
+        "Oz Bar": 0,
+        "Pear Tree": 0,
+        "Bennetts": 0,
+        "Black Bird": 0,
+        "Golf Tavern": 0
+      },
+      "Euan": {
         "Bar Salsa": 0,
         "Oz Bar": 0,
         "Pear Tree": 0,
